@@ -53,8 +53,8 @@ def navblue_to_myflightbook(input_file, output_file):
             flight_start_str = row['TimeText_ActualValidFrom'].strip()
             flight_end_str = row['TimeText_ActualValidToString'].strip()
 
-            flight_start = datetime.strptime(f"{dateText[:6]}{flight_start_str}", "%d%b%y%H%M")
-            flight_end = datetime.strptime(f"{dateText[:6]}{flight_end_str}", "%d%b%y%H%M")
+            flight_start = datetime.strptime(f"{dateText}{flight_start_str}", "%d%b%y%H%M")
+            flight_end = datetime.strptime(f"{dateText}{flight_end_str}", "%d%b%y%H%M")
 
             reg = row['Text10']
 
@@ -64,8 +64,8 @@ def navblue_to_myflightbook(input_file, output_file):
                 'Routes': routes,
                 'PICUS': picusTime/60,
                 'SIC': sicTime/60,
-                'Flight Start': flight_start.strftime("%Y/%m/%d %H:%M"),
-                'Flight End': flight_end.strftime("%Y/%m/%d %H:%M"),
+                'Flight Start': flight_start.strftime("%d%b%y %H:%M"),
+                'Flight End': flight_end.strftime("%d%b%y %H:%M"),
                 'Total Flight Time' : duration/ 60,
                 'Landings' : 1,
             })
