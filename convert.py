@@ -4,7 +4,7 @@ from datetime import datetime
 def navblue_to_myflightbook(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
         reader = csv.DictReader(infile)
-        fields = ['Date', 'Tail Number', 'Routes', 'PICUS', 'SIC', 'Flight Start', 'Flight End', 'Total Flight Time', 'Landings', 'Comments']
+        fields = ['Date', 'Tail Number', 'Route', 'PICUS', 'SIC', 'Flight Start', 'Flight End', 'Total Flight Time', 'Landings', 'Comments']
         writer = csv.DictWriter(outfile, fieldnames=fields)
 
         writer.writeheader()
@@ -61,7 +61,7 @@ def navblue_to_myflightbook(input_file, output_file):
             writer.writerow({
                 'Date': dateText,
                 'Tail Number': reg,
-                'Routes': routes,
+                'Route': routes,
                 'PICUS': picusTime/60,
                 'SIC': sicTime/60,
                 'Flight Start': flight_start.strftime("%d%b%y %H:%M"),
